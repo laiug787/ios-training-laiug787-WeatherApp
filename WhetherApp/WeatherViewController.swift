@@ -24,10 +24,10 @@ final class WeatherViewController: UIViewController {
         if weather == "sunny" {
             weatherImage.image = UIImage(named:"whether-sunny")?.withRenderingMode(.alwaysTemplate)
             weatherImage.tintColor = .systemRed
-        } else if weather == "rainy" {
+        } else if weather == "cloudy" {
             weatherImage.image = UIImage(named:"whether-cloudy")?.withRenderingMode(.alwaysTemplate)
             weatherImage.tintColor = .systemGray
-        } else if weather == "cloudy" {
+        } else if weather == "rainy" {
             weatherImage.image =  UIImage(named:"whether-rainy")?.withRenderingMode(.alwaysTemplate)
             weatherImage.tintColor = .systemBlue
         }
