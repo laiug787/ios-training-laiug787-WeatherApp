@@ -54,12 +54,18 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFF-Qz-nqO">
                                         <rect key="frame" x="0.0" y="0.0" width="107.33333333333333" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                        <connections>
+                                            <action selector="closeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aEy-Ny-3si"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07d-kz-XTj">
                                         <rect key="frame" x="107.33333333333331" y="0.0" width="107.66666666666669" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Reload"/>
+                                        <connections>
+                                            <action selector="reloadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pHw-JX-wJI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -79,6 +85,9 @@
                             <constraint firstItem="aJE-ze-hRR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r4Z-c4-E1q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherImage" destination="MS4-7b-ojx" id="uVy-BY-zmq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
