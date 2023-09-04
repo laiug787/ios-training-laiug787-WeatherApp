@@ -15,6 +15,7 @@ final class WeatherViewController: UIViewController {
     private let manager = YumemiWeather.self
 
     @IBAction private func closeAction(_ sender: Any) {
+        weatherImage.image = nil
         print("close")
     }
     
