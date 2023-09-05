@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		544FB4372AA7351B000E74D4 /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FB4362AA7351B000E74D4 /* WeatherType.swift */; };
 		54605C972AA57C59003FEFC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54605C962AA57C59003FEFC6 /* AppDelegate.swift */; };
 		54605C992AA57C59003FEFC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54605C982AA57C59003FEFC6 /* SceneDelegate.swift */; };
 		54605C9B2AA57C59003FEFC6 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54605C9A2AA57C59003FEFC6 /* WeatherViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		544FB4362AA7351B000E74D4 /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 		54605C932AA57C59003FEFC6 /* WhetherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhetherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54605C962AA57C59003FEFC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54605C982AA57C59003FEFC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		544FB4352AA7350E000E74D4 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				544FB4362AA7351B000E74D4 /* WeatherType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		54605C8A2AA57C59003FEFC6 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +71,7 @@
 				54605C962AA57C59003FEFC6 /* AppDelegate.swift */,
 				54605C982AA57C59003FEFC6 /* SceneDelegate.swift */,
 				54605C9A2AA57C59003FEFC6 /* WeatherViewController.swift */,
+				544FB4352AA7350E000E74D4 /* Enum */,
 				54605C9C2AA57C59003FEFC6 /* Main.storyboard */,
 				54605C9F2AA57C5A003FEFC6 /* Assets.xcassets */,
 				54605CA12AA57C5A003FEFC6 /* LaunchScreen.storyboard */,
@@ -148,6 +159,7 @@
 			files = (
 				54605C9B2AA57C59003FEFC6 /* WeatherViewController.swift in Sources */,
 				54605C972AA57C59003FEFC6 /* AppDelegate.swift in Sources */,
+				544FB4372AA7351B000E74D4 /* WeatherType.swift in Sources */,
 				54605C992AA57C59003FEFC6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
