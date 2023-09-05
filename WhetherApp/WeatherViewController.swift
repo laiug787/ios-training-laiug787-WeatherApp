@@ -16,6 +16,7 @@ final class WeatherViewController: UIViewController {
 
     @IBAction private func closeAction(_ sender: Any) {
         weatherImage.image = nil
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
