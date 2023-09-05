@@ -35,12 +35,5 @@ final class WeatherViewController: UIViewController {
         
         print(weather)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-
 }
 
