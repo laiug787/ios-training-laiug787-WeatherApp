@@ -21,15 +21,14 @@ final class WeatherViewController: UIViewController {
     @IBAction private func reloadAction(_ sender: Any) {
         let weather = weatherAPI.fetchWeatherCondition()
         
-        weatherImage.image = UIImage(named: weather.imageName)
-        weatherImage.tintColor = weather.imageColor
+        weatherImage.image = UIImage(named: getImageName(for: weather))
+        weatherImage.tintColor = getImageColor(for: weather)
     }
 }
 
-private extension WeatherType {
-    
-    var imageName: String {
-        switch self {
+private extension WeatherViewController {
+    func getImageName(for weatherType: WeatherType) -> String {
+        switch weatherType {
         case .sunny:
             return "whether-sunny"
         case .cloudy:
@@ -39,8 +38,8 @@ private extension WeatherType {
         }
     }
     
-    var imageColor: UIColor {
-        switch self {
+    func getImageColor(for weatherType: WeatherType) -> UIColor {
+        switch weatherType {
         case .sunny:
             return .systemRed
         case .cloudy:
