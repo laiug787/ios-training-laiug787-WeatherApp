@@ -12,7 +12,7 @@ final class WeatherViewController: UIViewController {
 
     private let WeatherRequest = YumemiWeather.self
     
-    @IBOutlet private weak var weatherImage: UIImageView!
+    @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
     @IBAction private func closeAction(_ sender: Any) {
         weatherImage.image = nil
