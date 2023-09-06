@@ -22,7 +22,7 @@ final class WeatherViewController: UIViewController {
     @IBAction private func reloadAction(_ sender: Any) {
         guard let weather = WeatherType(rawValue: WeatherRequest.fetchWeatherCondition()) else { return }
         
-        weatherImage.image = UIImage(named: weather.imageName)?.withRenderingMode(.alwaysTemplate)
+        weatherImage.image = UIImage(named: weather.imageName)
         weatherImage.tintColor = weather.imageColor
     }
 }
