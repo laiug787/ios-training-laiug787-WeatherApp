@@ -26,3 +26,28 @@ final class WeatherViewController: UIViewController {
     }
 }
 
+private extension WeatherType {
+    
+    var imageName: String {
+        switch self {
+        case .sunny:
+            return "whether-sunny"
+        case .cloudy:
+            return "whether-cloudy"
+        case .rainy:
+            return "whether-rainy"
+        }
+    }
+    
+    var imageColor: UIColor {
+        switch self {
+        case .sunny:
+            return .systemRed
+        case .cloudy:
+            return .systemGray
+        case .rainy:
+            return .systemBlue
+        }
+    }
+}
+
