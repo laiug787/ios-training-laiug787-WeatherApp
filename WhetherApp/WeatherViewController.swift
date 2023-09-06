@@ -9,7 +9,7 @@ import UIKit
 
 final class WeatherViewController: UIViewController {
     
-    private let manager = WeatherManager.instance
+    private let weatherAPI = WeatherRepository.instance
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
@@ -19,7 +19,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        let weather = manager.fetchWeatherCondition()
+        let weather = weatherAPI.fetchWeatherCondition()
         
         weatherImage.image = UIImage(named: weather.imageName)
         weatherImage.tintColor = weather.imageColor
