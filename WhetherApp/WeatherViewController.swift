@@ -28,6 +28,10 @@ final class WeatherViewController: UIViewController {
         super.viewDidLoad()
         self.delegate = self
     }
+    
+    deinit {
+        print("Deinitialize WeatherViewController")
+    }
 }
 
 // MARK: Delegate
