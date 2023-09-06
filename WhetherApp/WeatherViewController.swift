@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import YumemiWeather
 
 final class WeatherViewController: UIViewController {
-
-    private let WeatherRequest = YumemiWeather.self
+    
+    private let manager = WeatherManager.instance
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
@@ -20,7 +19,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        guard let weather = WeatherType(rawValue: WeatherRequest.fetchWeatherCondition()) else { return }
+        let weather = manager.fetchWeatherCondition()
         
         weatherImage.image = UIImage(named: weather.imageName)
         weatherImage.tintColor = weather.imageColor
