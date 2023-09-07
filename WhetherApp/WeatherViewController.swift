@@ -12,21 +12,22 @@ final class WeatherViewController: UIViewController {
     
     private let repository = WeatherRepository()
     
-    weak var delegate: WeatherViewDelegate?
+    private var weatherView: WeatherView!
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
     @IBAction private func closeAction(_ sender: Any) {
-        delegate?.closeWeather()
+        weatherView.close()
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        delegate?.reloadWeather()
+        weatherView.reload()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
+        weatherView = WeatherView()
+        weatherView.delegate = self
     }
     
     deinit {
