@@ -12,4 +12,15 @@ protocol WeatherViewDelegate: AnyObject {
     func reloadWeather()
 }
 
+class WeatherView {
+    weak var delegate: WeatherViewDelegate?
+    
+    func close() {
+        delegate?.closeWeather()
+    }
+    
+    func reload() {
+        delegate?.reloadWeather()
+    }
+}
 
