@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		544FB4372AA7351B000E74D4 /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FB4362AA7351B000E74D4 /* WeatherType.swift */; };
+		544FB4372AA7351B000E74D4 /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544FB4362AA7351B000E74D4 /* WeatherCondition.swift */; };
 		545A7D072AA83C190092CFE1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545A7D062AA83C190092CFE1 /* WeatherRepository.swift */; };
 		54605C972AA57C59003FEFC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54605C962AA57C59003FEFC6 /* AppDelegate.swift */; };
 		54605C992AA57C59003FEFC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54605C982AA57C59003FEFC6 /* SceneDelegate.swift */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		544FB4362AA7351B000E74D4 /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
+		544FB4362AA7351B000E74D4 /* WeatherCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
 		545A7D062AA83C190092CFE1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		54605C932AA57C59003FEFC6 /* WhetherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhetherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54605C962AA57C59003FEFC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		544FB4352AA7350E000E74D4 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				544FB4362AA7351B000E74D4 /* WeatherType.swift */,
+				544FB4362AA7351B000E74D4 /* WeatherCondition.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 				545A7D072AA83C190092CFE1 /* WeatherRepository.swift in Sources */,
 				54605C9B2AA57C59003FEFC6 /* WeatherViewController.swift in Sources */,
 				54605C972AA57C59003FEFC6 /* AppDelegate.swift in Sources */,
-				544FB4372AA7351B000E74D4 /* WeatherType.swift in Sources */,
+				544FB4372AA7351B000E74D4 /* WeatherCondition.swift in Sources */,
 				54605C992AA57C59003FEFC6 /* SceneDelegate.swift in Sources */,
 				54605CD12AA5DCCA003FEFC6 /* LaunchViewController.swift in Sources */,
 			);

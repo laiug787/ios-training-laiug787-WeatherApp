@@ -27,8 +27,8 @@ final class WeatherViewController: UIViewController {
 }
 
 private extension WeatherViewController {
-    func getImageName(for weatherType: WeatherType) -> String {
-        switch weatherType {
+    func getImageName(for weatherCondition: WeatherCondition) -> String {
+        switch weatherCondition {
         case .sunny:
             return "weather-sunny"
         case .cloudy:
@@ -38,8 +38,8 @@ private extension WeatherViewController {
         }
     }
     
-    func getImageColor(for weatherType: WeatherType) -> UIColor {
-        switch weatherType {
+    func getImageColor(for weatherCondition: WeatherCondition) -> UIColor {
+        switch weatherCondition {
         case .sunny:
             return .systemRed
         case .cloudy:
