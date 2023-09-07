@@ -30,11 +30,11 @@ private extension WeatherViewController {
     func getImageName(for weatherType: WeatherType) -> String {
         switch weatherType {
         case .sunny:
-            return "whether-sunny"
+            return "weather-sunny"
         case .cloudy:
-            return "whether-cloudy"
+            return "weather-cloudy"
         case .rainy:
-            return "whether-rainy"
+            return "weather-rainy"
         }
     }
     
