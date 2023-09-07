@@ -7,18 +7,13 @@
 
 import YumemiWeather
 
-final class WeatherRepository {
-    
-    static var instance = WeatherRepository()
-    
-    private let yumemiWeather = YumemiWeather.self
-    
-    private init() {
-        
-    }
-    
+protocol WeatherRepositoryProtocol {
+    func fetchWeatherCondition() -> WeatherType
+}
+
+struct WeatherRepository: WeatherRepositoryProtocol {
     func fetchWeatherCondition() -> WeatherType {
-        guard let weather = WeatherType(rawValue: yumemiWeather.fetchWeatherCondition()) else {
+        guard let weather = WeatherType(rawValue: YumemiWeather.fetchWeatherCondition()) else {
             fatalError("Fail to convert String to WeatherType")
         }
         return weather

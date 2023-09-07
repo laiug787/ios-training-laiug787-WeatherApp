@@ -9,7 +9,7 @@ import UIKit
 
 final class WeatherViewController: UIViewController {
     
-    private let weatherAPI = WeatherRepository.instance
+    private let weatherAPI = WeatherRepository()
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
