@@ -8,19 +8,7 @@
 import Foundation
 
 protocol WeatherViewDelegate: AnyObject {
-    func closeWeather()
-    func reloadWeather()
-}
-
-class WeatherView {
-    weak var delegate: WeatherViewDelegate?
-    
-    func close() {
-        delegate?.closeWeather()
-    }
-    
-    func reload() {
-        delegate?.reloadWeather()
-    }
+    func closeButtonTapped()
+    func reloadButtonTapped(_ weather: WeatherCondition)
 }
 

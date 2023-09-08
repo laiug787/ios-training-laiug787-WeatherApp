@@ -8,14 +8,20 @@
 import YumemiWeather
 
 protocol WeatherRepositoryProtocol {
-    func fetchWeatherCondition() -> WeatherCondition
+    func fetchWeatherCondition()
 }
 
 struct WeatherRepository: WeatherRepositoryProtocol {
-    func fetchWeatherCondition() -> WeatherCondition {
+    weak var delegate: WeatherViewDelegate?
+    
+    func fetchWeatherCondition() {
         guard let weather = WeatherCondition(rawValue: YumemiWeather.fetchWeatherCondition()) else {
             fatalError("Fail to convert String to WeatherCondition")
         }
-        return weather
+        delegate?.reloadButtonTapped(weather)
+    }
+    
+    func close() {
+        delegate?.closeButtonTapped()
     }
 }
