@@ -6,23 +6,46 @@
 //
 
 import UIKit
-import YumemiWeather
 
 final class WeatherViewController: UIViewController {
-
-    private let WeatherRequest = YumemiWeather.self
+    
+    private let repository = WeatherRepository()
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
     @IBAction private func closeAction(_ sender: Any) {
-        weatherImage.image = nil
+        self.dismiss(animated: true)
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        guard let weather = WeatherType(rawValue: WeatherRequest.fetchWeatherCondition()) else { return }
+        let weather = repository.fetchWeatherCondition()
         
-        weatherImage.image = UIImage(named: weather.imageName)?.withRenderingMode(.alwaysTemplate)
-        weatherImage.tintColor = weather.imageColor
+        weatherImage.image = UIImage(named: getImageName(for: weather))
+        weatherImage.tintColor = getImageColor(for: weather)
+    }
+}
+
+private extension WeatherViewController {
+    func getImageName(for weatherCondition: WeatherCondition) -> String {
+        switch weatherCondition {
+        case .sunny:
+            return "weather-sunny"
+        case .cloudy:
+            return "weather-cloudy"
+        case .rainy:
+            return "weather-rainy"
+        }
+    }
+    
+    func getImageColor(for weatherCondition: WeatherCondition) -> UIColor {
+        switch weatherCondition {
+        case .sunny:
+            return .systemRed
+        case .cloudy:
+            return .systemGray
+        case .rainy:
+            return .systemBlue
+        }
     }
 }
 
