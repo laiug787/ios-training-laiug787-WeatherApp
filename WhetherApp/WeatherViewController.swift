@@ -33,7 +33,7 @@ final class WeatherViewController: UIViewController {
 }
 
 // MARK: Delegate
-extension WeatherViewController: WeatherViewDelegate {
+extension WeatherViewController: WeatherRepositoryDelegate {
     func reloadButtonTapped(_ weather: WeatherCondition) {
         weatherImage.image = UIImage(named: getImageName(for: weather))
         weatherImage.tintColor = getImageColor(for: weather)

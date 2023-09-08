@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WeatherViewDelegate: AnyObject {
+protocol WeatherRepositoryDelegate: AnyObject {
     func reloadButtonTapped(_ weather: WeatherCondition)
 }
 
