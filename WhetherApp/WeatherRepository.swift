@@ -20,8 +20,4 @@ struct WeatherRepository: WeatherRepositoryProtocol {
         }
         delegate?.reloadButtonTapped(weather)
     }
-    
-    func close() {
-        delegate?.closeButtonTapped()
-    }
 }

@@ -15,7 +15,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
     @IBAction private func closeAction(_ sender: Any) {
-        repository.close()
+        dismiss(animated: true)
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
@@ -34,10 +34,6 @@ final class WeatherViewController: UIViewController {
 
 // MARK: Delegate
 extension WeatherViewController: WeatherViewDelegate {
-    func closeButtonTapped() {
-        dismiss(animated: true)
-    }
-    
     func reloadButtonTapped(_ weather: WeatherCondition) {
         weatherImage.image = UIImage(named: getImageName(for: weather))
         weatherImage.tintColor = getImageColor(for: weather)
