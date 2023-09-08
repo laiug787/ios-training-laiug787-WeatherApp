@@ -19,7 +19,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        repository.fetchWeatherCondition()
+        reloadButtonTapped(repository.fetchWeatherCondition())
     }
     
     override func viewDidLoad() {
