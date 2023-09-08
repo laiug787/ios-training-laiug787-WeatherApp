@@ -9,6 +9,8 @@ import YumemiWeather
 
 protocol WeatherRepositoryProtocol {
     func fetchWeatherCondition()
+    var delegate: WeatherRepositoryDelegate? { get set }
+    
 }
 
 class WeatherRepository: WeatherRepositoryProtocol {
