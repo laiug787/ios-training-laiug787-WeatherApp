@@ -7,30 +7,19 @@
 
 import Foundation
 
-struct WeatherRequest: Codable {
+struct WeatherRequest: Encodable {
     var area: String
     var date: Date
-    
-    init(area: String, date: Date) {
-        self.area = area
-        self.date = date
-    }
     
     enum CodingKeys: String, CodingKey {
         case area
         case date
     }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.area = try container.decode(String.self, forKey: .area)
-        self.date = try container.decode(String.self, forKey: .date).date
-    }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(area, forKey: .area)
-        try container.encode(date.string, forKey: .date)
+        try container.encode(date.yyyyMMddTHHmmssZZZZZ, forKey: .date)
     }
     
     func encodeToString() -> String {
@@ -50,21 +39,18 @@ struct WeatherRequest: Codable {
     }
 }
 
-extension Date {
-    var string: String {
+private extension DateFormatter {
+    static var yyyyMMddTHHmmssZZZZZ: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ja_JP")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        return dateFormatter.string(from: self)
+        return dateFormatter
     }
 }
 
-extension String {
-    var date: Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        return dateFormatter.date(from: self)!
+private extension Date {
+    var yyyyMMddTHHmmssZZZZZ: String {
+        DateFormatter.yyyyMMddTHHmmssZZZZZ.string(from: self)
     }
 }
 
