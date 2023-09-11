@@ -8,6 +8,6 @@
 import Foundation
 
 protocol WeatherRepositoryDelegate: AnyObject {
-    func weatherView(_ didReceiveWeatherUpdateWith: WeatherCondition)
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherCondition condition: WeatherCondition)
 }
 
