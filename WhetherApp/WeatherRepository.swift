@@ -25,6 +25,9 @@ class WeatherRepository: WeatherRepositoryProtocol {
         """
     
     func fetchWeatherCondition() {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         do {
             let weatherDataString = try YumemiWeather.fetchWeather(jsonString)
             guard let jsonData = weatherDataString.data(using: .utf8) else {
