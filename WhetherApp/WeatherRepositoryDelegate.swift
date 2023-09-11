@@ -8,6 +8,6 @@
 import Foundation
 
 protocol WeatherRepositoryDelegate: AnyObject {
-    func reloadButtonTapped(_ weather: WeatherCondition)
+    func weatherView(_ didReceiveWeatherUpdateWith: WeatherCondition)
 }
 

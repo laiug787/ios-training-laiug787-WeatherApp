@@ -19,7 +19,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        reloadButtonTapped(repository.fetchWeatherCondition())
+        weatherView(repository.fetchWeatherCondition())
     }
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ final class WeatherViewController: UIViewController {
 
 // MARK: Delegate
 extension WeatherViewController: WeatherRepositoryDelegate {
-    func reloadButtonTapped(_ weather: WeatherCondition) {
+    func weatherView(_ weather: WeatherCondition) {
         weatherImage.image = UIImage(named: getImageName(for: weather))
         weatherImage.tintColor = getImageColor(for: weather)
     }
