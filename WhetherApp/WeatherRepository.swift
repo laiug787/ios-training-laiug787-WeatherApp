@@ -30,10 +30,7 @@ class WeatherRepository: WeatherRepositoryProtocol {
         
         do {
             let weatherDataString = try YumemiWeather.fetchWeather(jsonString)
-            guard let jsonData = weatherDataString.data(using: .utf8) else {
-                fatalError("Fail to convert String to Data")
-            }
-            let weatherData = try decoder.decode(WeatherData.self, from: jsonData)
+            let weatherData = try WeatherDecoder.decodeWeatherData(weatherDataString)
             delegate?.weatherRepository(self, didFetchWeatherData: weatherData)
         } catch {
             delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
