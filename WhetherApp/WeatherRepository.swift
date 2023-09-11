@@ -10,16 +10,16 @@ import YumemiWeather
 protocol WeatherRepositoryProtocol: AnyObject {
     var delegate: WeatherRepositoryDelegate? { get set }
     
-    func fetchWeatherCondition() -> WeatherCondition
+    func fetchWeatherCondition()
 }
 
 class WeatherRepository: WeatherRepositoryProtocol {
     weak var delegate: WeatherRepositoryDelegate?
     
-    func fetchWeatherCondition() -> WeatherCondition {
+    func fetchWeatherCondition() {
         guard let weather = WeatherCondition(rawValue: YumemiWeather.fetchWeatherCondition()) else {
             fatalError("Fail to convert String to WeatherCondition")
         }
-        return weather
+        delegate?.weatherRepository(self, didFetchWeatherCondition: weather)
     }
 }

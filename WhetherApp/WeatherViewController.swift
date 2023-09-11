@@ -19,7 +19,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        weatherView(repository.fetchWeatherCondition())
+        repository.fetchWeatherCondition()
     }
     
     override func viewDidLoad() {
@@ -34,9 +34,9 @@ final class WeatherViewController: UIViewController {
 
 // MARK: Delegate
 extension WeatherViewController: WeatherRepositoryDelegate {
-    func weatherView(_ weather: WeatherCondition) {
-        weatherImage.image = UIImage(named: getImageName(for: weather))
-        weatherImage.tintColor = getImageColor(for: weather)
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherCondition condition: WeatherCondition) {
+        weatherImage.image = UIImage(named: getImageName(for: condition))
+        weatherImage.tintColor = getImageColor(for: condition)
     }
 }
 
