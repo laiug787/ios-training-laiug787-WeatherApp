@@ -34,9 +34,9 @@ final class WeatherViewController: UIViewController {
 
 // MARK: Delegate
 extension WeatherViewController: WeatherRepositoryDelegate {
-    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherCondition condition: WeatherCondition) {
-        weatherImage.image = UIImage(named: getImageName(for: condition))
-        weatherImage.tintColor = getImageColor(for: condition)
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherData data: WeatherData) {
+        weatherImage.image = UIImage(named: getImageName(for: data.weatherCondition))
+        weatherImage.tintColor = getImageColor(for: data.weatherCondition)
     }
     
     func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: WeatherError) {
