@@ -40,7 +40,7 @@ extension WeatherViewController: WeatherRepositoryDelegate {
     }
 }
 
-// MARK: Extensions
+// MARK: Private
 private extension WeatherViewController {
     func getImageName(for weatherCondition: WeatherCondition) -> String {
         switch weatherCondition {
