@@ -17,23 +17,22 @@ protocol WeatherRepositoryProtocol: AnyObject {
 class WeatherRepository: WeatherRepositoryProtocol {
     weak var delegate: WeatherRepositoryDelegate?
     
-    let jsonString = """
-        {
-            "area": "tokyo",
-            "date": "2020-04-01T12:00:00+09:00"
-        }
-        """
-    
     func fetchWeatherCondition() {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
+<<<<<<< HEAD
             let weatherDataString = try YumemiWeather.fetchWeather(jsonString)
             guard let jsonData = weatherDataString.data(using: .utf8) else {
                 fatalError("Fail to convert String to Data")
             }
             let weatherData = try decodeWeatherData(jsonData)
+=======
+            let request = WeatherRequest(area: "Tokyo", date: .now)
+            let weatherDataString = try YumemiWeather.fetchWeather(request.encodeToString())
+            let weatherData = try WeatherDecoder.decodeWeatherData(weatherDataString)
+>>>>>>> 859bfa1 (add: WeatherRequest)
             delegate?.weatherRepository(self, didFetchWeatherData: weatherData)
         } catch {
             delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
