@@ -14,7 +14,7 @@ protocol WeatherRepositoryProtocol: AnyObject {
 }
 
 class WeatherRepository: WeatherRepositoryProtocol {
-    var delegate: WeatherRepositoryDelegate?
+    weak var delegate: WeatherRepositoryDelegate?
     
     func fetchWeatherCondition() -> WeatherCondition {
         guard let weather = WeatherCondition(rawValue: YumemiWeather.fetchWeatherCondition()) else {
