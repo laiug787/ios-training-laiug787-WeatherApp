@@ -10,7 +10,7 @@ import UIKit
 // MARK: ViewController
 final class WeatherViewController: UIViewController {
     
-    private var repository: WeatherRepositoryProtocol!
+    private let repository: WeatherRepositoryProtocol = WeatherRepository()
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
@@ -24,7 +24,6 @@ final class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repository = WeatherRepository()
         repository.delegate = self
     }
     
