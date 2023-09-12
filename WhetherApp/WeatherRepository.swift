@@ -24,7 +24,7 @@ class WeatherRepository: WeatherRepositoryProtocol {
             }
             delegate?.weatherRepository(self, didFetchWeatherCondition: weather)
         } catch {
-            delegate?.weatherRepository(self, didFailWithError: error)
+            delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
         }
     }
 }
