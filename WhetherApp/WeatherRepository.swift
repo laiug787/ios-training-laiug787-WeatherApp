@@ -17,9 +17,14 @@ class WeatherRepository: WeatherRepositoryProtocol {
     weak var delegate: WeatherRepositoryDelegate?
     
     func fetchWeatherCondition() {
-        guard let weather = WeatherCondition(rawValue: YumemiWeather.fetchWeatherCondition()) else {
-            fatalError("Fail to convert String to WeatherCondition")
+        do {
+            let weatherString = try YumemiWeather.fetchWeatherCondition(at: "Tokyo")
+            guard let weather = WeatherCondition(rawValue: weatherString) else {
+                fatalError("Fail to convert String to WeatherCondition")
+            }
+            delegate?.weatherRepository(self, didFetchWeatherCondition: weather)
+        } catch {
+            delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
         }
-        delegate?.weatherRepository(self, didFetchWeatherCondition: weather)
     }
 }

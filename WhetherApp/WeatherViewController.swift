@@ -38,6 +38,13 @@ extension WeatherViewController: WeatherRepositoryDelegate {
         weatherImage.image = UIImage(named: getImageName(for: condition))
         weatherImage.tintColor = getImageColor(for: condition)
     }
+    
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: WeatherError) {
+        let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
+        let done = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(done)
+        present(alert, animated: true)
+    }
 }
 
 // MARK: Private

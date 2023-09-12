@@ -19,6 +19,7 @@
 		54605CAC2AA57C8C003FEFC6 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 54605CAB2AA57C8C003FEFC6 /* YumemiWeather */; };
 		54605CD12AA5DCCA003FEFC6 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */; };
 		54605CD32AA5DE47003FEFC6 /* LaunchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */; };
+		54BFE1BB2AAFFC8A00FC3573 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		54605CA42AA57C5A003FEFC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchView.storyboard; sourceTree = "<group>"; };
+		54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				54605C9A2AA57C59003FEFC6 /* WeatherViewController.swift */,
 				545A7D082AA87B370092CFE1 /* WeatherRepositoryDelegate.swift */,
 				545A7D062AA83C190092CFE1 /* WeatherRepository.swift */,
+				54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */,
 				544FB4352AA7350E000E74D4 /* Enum */,
 				54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */,
 				54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */,
@@ -177,6 +180,7 @@
 				54605C992AA57C59003FEFC6 /* SceneDelegate.swift in Sources */,
 				545A7D092AA87B370092CFE1 /* WeatherRepositoryDelegate.swift in Sources */,
 				54605CD12AA5DCCA003FEFC6 /* LaunchViewController.swift in Sources */,
+				54BFE1BB2AAFFC8A00FC3573 /* WeatherError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
