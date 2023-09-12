@@ -27,6 +27,13 @@ final class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         repository.delegate = self
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.reloadAction),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
     }
     
     deinit {
