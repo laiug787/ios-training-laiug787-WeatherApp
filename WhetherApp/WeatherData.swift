@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherData: Hashable, Decodable {
+struct WeatherData: Decodable {
     var date: String
     var maxTemperature: Int
     var minTemperature: Int
