@@ -9,9 +9,9 @@ import Foundation
 import YumemiWeather
 
 enum WeatherError: Error {
-    case invalidParameterError
+    case invalidParameter
     case invalidResponse
-    case unknownError
+    case unknown
     
     init(_ error: Error) {
         guard let weatherError = error as? YumemiWeatherError else {
@@ -21,9 +21,9 @@ enum WeatherError: Error {
         
         switch weatherError {
         case .invalidParameterError:
-            self = .invalidParameterError
+            self = .invalidParameter
         case .unknownError:
-            self = .unknownError
+            self = .unknown
         }
     }
 }
@@ -31,11 +31,11 @@ enum WeatherError: Error {
 extension WeatherError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .invalidParameterError:
-            return "Invalid parameter error"
+        case .invalidParameter:
+            return "Invalid parameter"
         case .invalidResponse:
             return "Invalid response"
-        case .unknownError:
+        case .unknown:
             return "Unknown error"
         }
     }
