@@ -18,9 +18,6 @@ class WeatherRepository: WeatherRepositoryProtocol {
     weak var delegate: WeatherRepositoryDelegate?
     
     func fetchWeatherCondition() {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
         do {
 <<<<<<< HEAD
             let weatherDataString = try YumemiWeather.fetchWeather(jsonString)
