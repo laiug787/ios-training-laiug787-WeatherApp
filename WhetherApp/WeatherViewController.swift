@@ -7,24 +7,40 @@
 
 import UIKit
 
+// MARK: ViewController
 final class WeatherViewController: UIViewController {
     
-    private let repository = WeatherRepository()
+    private let repository: WeatherRepositoryProtocol = WeatherRepository()
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
 
     @IBAction private func closeAction(_ sender: Any) {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        let weather = repository.fetchWeatherCondition()
-        
-        weatherImage.image = UIImage(named: getImageName(for: weather))
-        weatherImage.tintColor = getImageColor(for: weather)
+        repository.fetchWeatherCondition()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        repository.delegate = self
+    }
+    
+    deinit {
+        print("Deinitialize WeatherViewController")
     }
 }
 
+// MARK: Delegate
+extension WeatherViewController: WeatherRepositoryDelegate {
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherCondition condition: WeatherCondition) {
+        weatherImage.image = UIImage(named: getImageName(for: condition))
+        weatherImage.tintColor = getImageColor(for: condition)
+    }
+}
+
+// MARK: Private
 private extension WeatherViewController {
     func getImageName(for weatherCondition: WeatherCondition) -> String {
         switch weatherCondition {
