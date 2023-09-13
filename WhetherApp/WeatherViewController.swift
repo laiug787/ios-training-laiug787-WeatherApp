@@ -26,8 +26,6 @@ final class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        minTemperatureLabel.textColor = .systemBlue
-        maxTemperatureLabel.textColor = .systemRed
         repository.delegate = self
     }
     
