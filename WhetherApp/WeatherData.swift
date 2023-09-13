@@ -8,8 +8,8 @@
 import Foundation
 
 struct WeatherData: Decodable {
-    var date: String
-    var maxTemperature: Int
-    var minTemperature: Int
-    var weatherCondition: WeatherCondition
+    let date: String
+    let maxTemperature: Int
+    let minTemperature: Int
+    let weatherCondition: WeatherCondition
 }
