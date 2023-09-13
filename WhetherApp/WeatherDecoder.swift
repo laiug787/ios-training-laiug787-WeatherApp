@@ -8,14 +8,9 @@
 import Foundation
 
 struct WeatherDecoder {
-    static func decodeWeatherData(_ jsonString: String) throws -> WeatherData {
+    static func decodeWeatherData(_ data: Data) throws -> WeatherData {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        guard let jsonData = jsonString.data(using: .utf8) else {
-            fatalError("Fail to convert String to Data")
-        }
-        
-        return try decoder.decode(WeatherData.self, from: jsonData)
+        return try decoder.decode(WeatherData.self, from: data)
     }
 }
