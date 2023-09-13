@@ -8,8 +8,8 @@
 import Foundation
 
 struct WeatherRequest: Encodable {
-    var area: String
-    var date: Date
+    let area: String
+    let date: Date
     
     enum CodingKeys: String, CodingKey {
         case area
