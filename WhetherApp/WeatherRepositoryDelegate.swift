@@ -9,6 +9,6 @@ import Foundation
 
 protocol WeatherRepositoryDelegate: AnyObject {
     func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherData data: WeatherData)
-    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: WeatherError)
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: Error)
 }
 

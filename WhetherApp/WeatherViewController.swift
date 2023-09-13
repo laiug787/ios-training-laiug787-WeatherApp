@@ -43,7 +43,7 @@ extension WeatherViewController: WeatherRepositoryDelegate {
         maxTemperatureLabel.text = "\(data.maxTemperature)"
     }
     
-    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: WeatherError) {
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: Error) {
         let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
         let done = UIAlertAction(title: "OK", style: .default)
         alert.addAction(done)
