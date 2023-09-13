@@ -30,10 +30,16 @@ class WeatherRepository: WeatherRepositoryProtocol {
             guard let jsonData = weatherDataString.data(using: .utf8) else {
                 fatalError("Fail to convert String to Data")
             }
-            let weatherData = try WeatherDecoder.decodeWeatherData(jsonData)
+            let weatherData = try decodeWeatherData(jsonData)
             delegate?.weatherRepository(self, didFetchWeatherData: weatherData)
         } catch {
             delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
         }
+    }
+    
+    private func decodeWeatherData(_ data: Data) throws -> WeatherData {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return try decoder.decode(WeatherData.self, from: data)
     }
 }
