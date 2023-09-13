@@ -19,17 +19,12 @@ class WeatherRepository: WeatherRepositoryProtocol {
     
     func fetchWeatherCondition() {
         do {
-<<<<<<< HEAD
-            let weatherDataString = try YumemiWeather.fetchWeather(jsonString)
+            let request = WeatherRequest(area: "Tokyo", date: .now)
+            let weatherDataString = try YumemiWeather.fetchWeather(request.encodeToString())
             guard let jsonData = weatherDataString.data(using: .utf8) else {
                 fatalError("Fail to convert String to Data")
             }
             let weatherData = try decodeWeatherData(jsonData)
-=======
-            let request = WeatherRequest(area: "Tokyo", date: .now)
-            let weatherDataString = try YumemiWeather.fetchWeather(request.encodeToString())
-            let weatherData = try WeatherDecoder.decodeWeatherData(weatherDataString)
->>>>>>> 859bfa1 (add: WeatherRequest)
             delegate?.weatherRepository(self, didFetchWeatherData: weatherData)
         } catch {
             delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
