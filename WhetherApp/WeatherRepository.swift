@@ -35,8 +35,7 @@ class WeatherRepository: WeatherRepositoryProtocol {
         encoder.outputFormatting = .prettyPrinted
         encoder.keyEncodingStrategy = .convertToSnakeCase
         let jsonData = try encoder.encode(data)
-        let string = String(decoding: jsonData, as: UTF8.self)
-        return string
+        return String(decoding: jsonData, as: UTF8.self)
     }
     
     private func decodeWeatherData(_ string: String) throws -> WeatherData {
