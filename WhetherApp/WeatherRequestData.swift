@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherRequest: Encodable {
+struct WeatherRequestData: Encodable {
     let area: String
     let date: Date
     
@@ -34,7 +34,7 @@ struct WeatherRequest: Encodable {
             }
             return string
         } catch {
-            fatalError("Fail to convert WeatherRequest to String")
+            fatalError("Fail to convert WeatherRequestData to String")
         }
     }
 }
