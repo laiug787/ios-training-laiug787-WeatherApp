@@ -19,9 +19,9 @@ class WeatherRepository: WeatherRepositoryProtocol {
     
     func fetchWeatherCondition(area: String, date: Date) {
         do {
-            let weatherRequestData = WeatherRequestData(area: area, date: date)
-            let weatherRequestDataString = try encodeWeatherRequestData(weatherRequestData)
-            let weatherDataString = try YumemiWeather.fetchWeather(weatherRequestDataString)
+            let WeatherRequestParameter = WeatherRequestParameter(area: area, date: date)
+            let WeatherRequestParameterString = try encodeWeatherRequestData(WeatherRequestParameter)
+            let weatherDataString = try YumemiWeather.fetchWeather(WeatherRequestParameterString)
             let weatherData = try decodeWeatherData(weatherDataString)
             delegate?.weatherRepository(self, didFetchWeatherData: weatherData)
         } catch {
@@ -29,7 +29,7 @@ class WeatherRepository: WeatherRepositoryProtocol {
         }
     }
     
-    private func encodeWeatherRequestData(_ data: WeatherRequestData) throws -> String {
+    private func encodeWeatherRequestData(_ data: WeatherRequestParameter) throws -> String {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         encoder.outputFormatting = .prettyPrinted

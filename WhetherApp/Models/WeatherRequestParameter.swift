@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherRequestData: Encodable {
+struct WeatherRequestParameter: Encodable {
     let area: String
     let date: Date
 }
