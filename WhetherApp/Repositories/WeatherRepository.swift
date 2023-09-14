@@ -19,29 +19,33 @@ class WeatherRepository: WeatherRepositoryProtocol {
     
     func fetchWeatherCondition(area: String, date: Date) {
         do {
-            let WeatherRequestParameter = WeatherRequestParameter(area: area, date: date)
-            let WeatherRequestParameterString = try encodeWeatherRequestData(WeatherRequestParameter)
-            let weatherDataString = try YumemiWeather.fetchWeather(WeatherRequestParameterString)
-            let weatherData = try decodeWeatherData(weatherDataString)
+            let WeatherRequestString = try encode(WeatherRequestParameter(area: area, date: date))
+            let weatherDataString = try YumemiWeather.fetchWeather(WeatherRequestString)
+            let weatherData = try decode(weatherDataString: weatherDataString)
             delegate?.weatherRepository(self, didFetchWeatherData: weatherData)
         } catch {
             delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
         }
     }
     
-    private func encodeWeatherRequestData(_ data: WeatherRequestParameter) throws -> String {
+    private func encode(_ data: WeatherRequestParameter) throws -> String {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         encoder.outputFormatting = .prettyPrinted
         encoder.keyEncodingStrategy = .convertToSnakeCase
         let jsonData = try encoder.encode(data)
-        return String(decoding: jsonData, as: UTF8.self)
+        guard let string = String(data: jsonData, encoding: .utf8) else {
+            fatalError("Fail to convert Data to String")
+        }
+        return string
     }
     
-    private func decodeWeatherData(_ string: String) throws -> WeatherData {
+    private func decode(weatherDataString string: String) throws -> WeatherData {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let data = Data(string.utf8)
+        guard let data = string.data(using: .utf8) else {
+            fatalError("Fail to convert String to Data")
+        }
         return try decoder.decode(WeatherData.self, from: data)
     }
 }
