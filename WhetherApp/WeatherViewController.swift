@@ -21,7 +21,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
-        repository.fetchWeatherCondition()
+        repository.fetchWeatherCondition(area: "Tokyo", date: .now)
     }
     
     override func viewDidLoad() {

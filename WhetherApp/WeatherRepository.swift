@@ -11,15 +11,15 @@ import YumemiWeather
 protocol WeatherRepositoryProtocol: AnyObject {
     var delegate: WeatherRepositoryDelegate? { get set }
     
-    func fetchWeatherCondition()
+    func fetchWeatherCondition(area: String, date: Date)
 }
 
 class WeatherRepository: WeatherRepositoryProtocol {
     weak var delegate: WeatherRepositoryDelegate?
     
-    func fetchWeatherCondition() {
+    func fetchWeatherCondition(area: String, date: Date) {
         do {
-            let weatherRequestData = WeatherRequestData(area: "Tokyo", date: .now)
+            let weatherRequestData = WeatherRequestData(area: area, date: date)
             let weatherRequestDataString = try encodeWeatherRequestData(weatherRequestData)
             let weatherDataString = try YumemiWeather.fetchWeather(weatherRequestDataString)
             let weatherData = try decodeWeatherData(weatherDataString)
