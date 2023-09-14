@@ -19,6 +19,7 @@
 		54605CAC2AA57C8C003FEFC6 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 54605CAB2AA57C8C003FEFC6 /* YumemiWeather */; };
 		54605CD12AA5DCCA003FEFC6 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */; };
 		54605CD32AA5DE47003FEFC6 /* LaunchView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */; };
+		54B097FB2AAEE65600A984FE /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B097FA2AAEE65600A984FE /* WeatherData.swift */; };
 		54BFE1BB2AAFFC8A00FC3573 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		54605CA42AA57C5A003FEFC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchView.storyboard; sourceTree = "<group>"; };
+		54B097FA2AAEE65600A984FE /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,14 +53,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		544FB4352AA7350E000E74D4 /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-				544FB4362AA7351B000E74D4 /* WeatherCondition.swift */,
-			);
-			path = Enum;
-			sourceTree = "<group>";
-		};
 		54605C8A2AA57C59003FEFC6 = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +78,8 @@
 				545A7D082AA87B370092CFE1 /* WeatherRepositoryDelegate.swift */,
 				545A7D062AA83C190092CFE1 /* WeatherRepository.swift */,
 				54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */,
-				544FB4352AA7350E000E74D4 /* Enum */,
+				54B097FA2AAEE65600A984FE /* WeatherData.swift */,
+				544FB4362AA7351B000E74D4 /* WeatherCondition.swift */,
 				54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */,
 				54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */,
 				54605C9C2AA57C59003FEFC6 /* WeatherView.storyboard */,
@@ -179,6 +174,7 @@
 				544FB4372AA7351B000E74D4 /* WeatherCondition.swift in Sources */,
 				54605C992AA57C59003FEFC6 /* SceneDelegate.swift in Sources */,
 				545A7D092AA87B370092CFE1 /* WeatherRepositoryDelegate.swift in Sources */,
+				54B097FB2AAEE65600A984FE /* WeatherData.swift in Sources */,
 				54605CD12AA5DCCA003FEFC6 /* LaunchViewController.swift in Sources */,
 				54BFE1BB2AAFFC8A00FC3573 /* WeatherError.swift in Sources */,
 			);

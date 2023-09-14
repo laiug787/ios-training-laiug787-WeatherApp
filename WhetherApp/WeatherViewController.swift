@@ -13,7 +13,9 @@ final class WeatherViewController: UIViewController {
     private let repository: WeatherRepositoryProtocol = WeatherRepository()
     
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
-
+    @IBOutlet @ViewLoading private var minTemperatureLabel: UILabel
+    @IBOutlet @ViewLoading private var maxTemperatureLabel: UILabel
+    
     @IBAction private func closeAction(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -34,12 +36,14 @@ final class WeatherViewController: UIViewController {
 
 // MARK: Delegate
 extension WeatherViewController: WeatherRepositoryDelegate {
-    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherCondition condition: WeatherCondition) {
-        weatherImage.image = UIImage(named: getImageName(for: condition))
-        weatherImage.tintColor = getImageColor(for: condition)
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherData data: WeatherData) {
+        weatherImage.image = UIImage(named: getImageName(for: data.weatherCondition))
+        weatherImage.tintColor = getImageColor(for: data.weatherCondition)
+        minTemperatureLabel.text = "\(data.minTemperature)"
+        maxTemperatureLabel.text = "\(data.maxTemperature)"
     }
     
-    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: WeatherError) {
+    func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: Error) {
         let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
         let done = UIAlertAction(title: "OK", style: .default)
         alert.addAction(done)
