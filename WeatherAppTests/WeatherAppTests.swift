@@ -8,7 +8,7 @@
 import XCTest
 @testable import WhetherApp
 
-final class WeatherRepositryTest: WeatherRepositoryProtocol {
+final class MockWeatherRepositry: WeatherRepositoryProtocol {
     weak var delegate: WhetherApp.WeatherRepositoryDelegate?
     
     let weatherData = WeatherData(
@@ -25,15 +25,18 @@ final class WeatherRepositryTest: WeatherRepositoryProtocol {
 
 final class WeatherAppTests: XCTestCase {
     
-    func testSunnyWeatherImage() {
-        let repository = WeatherRepositryTest()
-        let viewController = WeatherViewController(repository: repository)
+    func testWeatherImageIsSunny() {
+        let repository = MockWeatherRepositry()
+        let storyBoard = UIStoryboard(name: "WeatherView", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(identifier: "WeatherView") { coder in
+            return WeatherViewController(coder: coder, repository: repository)
+        }
+
+        guard let imageView = viewController.weatherImage else { return }
         
         viewController.loadViewIfNeeded()
         
         viewController.reloadAction(self)
-        
-        let imageView = viewController.weatherImage!
         
         XCTAssertNotNil(imageView.image)
         

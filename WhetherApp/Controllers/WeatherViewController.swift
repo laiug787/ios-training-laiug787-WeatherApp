@@ -14,9 +14,9 @@ final class WeatherViewController: UIViewController {
     
     private var isAlertVisible: Bool = false
     
-    @IBOutlet var weatherImage: UIImageView! = UIImageView()
-    @IBOutlet var minTemperatureLabel: UILabel! = UILabel()
-    @IBOutlet var maxTemperatureLabel: UILabel! = UILabel()
+    @IBOutlet var weatherImage: UIImageView!
+    @IBOutlet var minTemperatureLabel: UILabel!
+    @IBOutlet var maxTemperatureLabel: UILabel!
     
     @IBAction private func closeAction(_ sender: Any) {
         dismiss(animated: true)
@@ -27,9 +27,9 @@ final class WeatherViewController: UIViewController {
         repository.fetchWeatherCondition(area: "Tokyo", date: .now)
     }
     
-    init(repository: WeatherRepositoryProtocol) {
+    init?(coder: NSCoder, repository: WeatherRepositoryProtocol) {
         self.repository = repository
-        super.init(nibName: nil, bundle: nil)
+        super.init(coder: coder)
     }
     
     required init?(coder aDecoder: NSCoder) {
