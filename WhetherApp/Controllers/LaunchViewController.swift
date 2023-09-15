@@ -12,10 +12,13 @@ final class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let storyboard = UIStoryboard(name: "WeatherView", bundle: nil)
-        let nextVC = storyboard.instantiateViewController(identifier: "WeatherView")
-        nextVC.modalPresentationStyle = .fullScreen
-        self.present(nextVC, animated: true)
+        let repository = WeatherRepository()
+        let storyBoard = UIStoryboard(name: "WeatherView", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(identifier: "WeatherView") { coder in
+            return WeatherViewController(coder: coder, repository: repository)
+        }
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true)
     }
     
 }
