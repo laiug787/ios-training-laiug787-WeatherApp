@@ -76,21 +76,53 @@
 			children = (
 				54605C962AA57C59003FEFC6 /* AppDelegate.swift */,
 				54605C982AA57C59003FEFC6 /* SceneDelegate.swift */,
-				54605C9A2AA57C59003FEFC6 /* WeatherViewController.swift */,
-				545A7D082AA87B370092CFE1 /* WeatherRepositoryDelegate.swift */,
-				545A7D062AA83C190092CFE1 /* WeatherRepository.swift */,
-				54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */,
-				54B097FE2AAF0A3700A984FE /* WeatherRequestData.swift */,
-				54B097FA2AAEE65600A984FE /* WeatherData.swift */,
-				544FB4362AA7351B000E74D4 /* WeatherCondition.swift */,
-				54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */,
-				54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */,
-				54605C9C2AA57C59003FEFC6 /* WeatherView.storyboard */,
+				548BEF2C2AB033390098E08D /* Models */,
+				548BEF2D2AB033560098E08D /* Views */,
+				548BEF2E2AB0335C0098E08D /* Controllers */,
+				548BEF2F2AB033750098E08D /* Repositories */,
 				54605C9F2AA57C5A003FEFC6 /* Assets.xcassets */,
 				54605CA12AA57C5A003FEFC6 /* LaunchScreen.storyboard */,
 				54605CA42AA57C5A003FEFC6 /* Info.plist */,
 			);
 			path = WhetherApp;
+			sourceTree = "<group>";
+		};
+		548BEF2C2AB033390098E08D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				544FB4362AA7351B000E74D4 /* WeatherCondition.swift */,
+				54B097FA2AAEE65600A984FE /* WeatherData.swift */,
+				54BFE1BA2AAFFC8A00FC3573 /* WeatherError.swift */,
+				54B097FE2AAF0A3700A984FE /* WeatherRequestData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		548BEF2D2AB033560098E08D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				54605CD22AA5DE47003FEFC6 /* LaunchView.storyboard */,
+				54605C9C2AA57C59003FEFC6 /* WeatherView.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		548BEF2E2AB0335C0098E08D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				54605CD02AA5DCCA003FEFC6 /* LaunchViewController.swift */,
+				54605C9A2AA57C59003FEFC6 /* WeatherViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		548BEF2F2AB033750098E08D /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				545A7D082AA87B370092CFE1 /* WeatherRepositoryDelegate.swift */,
+				545A7D062AA83C190092CFE1 /* WeatherRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
