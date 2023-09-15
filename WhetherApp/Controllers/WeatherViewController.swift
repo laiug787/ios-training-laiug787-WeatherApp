@@ -10,23 +10,32 @@ import UIKit
 // MARK: ViewController
 final class WeatherViewController: UIViewController {
     
-    private let repository: WeatherRepositoryProtocol = WeatherRepository()
+    var repository: WeatherRepositoryProtocol = WeatherRepository()
     
     private var isAlertVisible: Bool = false
     
-    @IBOutlet @ViewLoading private var weatherImage: UIImageView
-    @IBOutlet @ViewLoading private var minTemperatureLabel: UILabel
-    @IBOutlet @ViewLoading private var maxTemperatureLabel: UILabel
+    @IBOutlet var weatherImage: UIImageView! = UIImageView()
+    @IBOutlet var minTemperatureLabel: UILabel! = UILabel()
+    @IBOutlet var maxTemperatureLabel: UILabel! = UILabel()
     
     @IBAction private func closeAction(_ sender: Any) {
         dismiss(animated: true)
     }
     
-    @IBAction private func reloadAction(_ sender: Any) {
+    @IBAction func reloadAction(_ sender: Any) {
         guard !isAlertVisible else { return }
         repository.fetchWeatherCondition(area: "Tokyo", date: .now)
     }
     
+    init(repository: WeatherRepositoryProtocol) {
+        self.repository = repository
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         repository.delegate = self
