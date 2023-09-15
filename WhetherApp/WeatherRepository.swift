@@ -11,35 +11,37 @@ import YumemiWeather
 protocol WeatherRepositoryProtocol: AnyObject {
     var delegate: WeatherRepositoryDelegate? { get set }
     
-    func fetchWeatherCondition()
+    func fetchWeatherCondition(area: String, date: Date)
 }
 
 class WeatherRepository: WeatherRepositoryProtocol {
     weak var delegate: WeatherRepositoryDelegate?
     
-    let jsonString = """
-        {
-            "area": "tokyo",
-            "date": "2020-04-01T12:00:00+09:00"
-        }
-        """
-    
-    func fetchWeatherCondition() {
+    func fetchWeatherCondition(area: String, date: Date) {
         do {
-            let weatherDataString = try YumemiWeather.fetchWeather(jsonString)
-            guard let jsonData = weatherDataString.data(using: .utf8) else {
-                fatalError("Fail to convert String to Data")
-            }
-            let weatherData = try decodeWeatherData(jsonData)
+            let weatherRequestData = WeatherRequestData(area: area, date: date)
+            let weatherRequestDataString = try encodeWeatherRequestData(weatherRequestData)
+            let weatherDataString = try YumemiWeather.fetchWeather(weatherRequestDataString)
+            let weatherData = try decodeWeatherData(weatherDataString)
             delegate?.weatherRepository(self, didFetchWeatherData: weatherData)
         } catch {
             delegate?.weatherRepository(self, didFailWithError: WeatherError(error))
         }
     }
     
-    private func decodeWeatherData(_ data: Data) throws -> WeatherData {
+    private func encodeWeatherRequestData(_ data: WeatherRequestData) throws -> String {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        encoder.outputFormatting = .prettyPrinted
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        let jsonData = try encoder.encode(data)
+        return String(decoding: jsonData, as: UTF8.self)
+    }
+    
+    private func decodeWeatherData(_ string: String) throws -> WeatherData {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let data = Data(string.utf8)
         return try decoder.decode(WeatherData.self, from: data)
     }
 }
