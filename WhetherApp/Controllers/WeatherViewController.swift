@@ -54,7 +54,7 @@ final class WeatherViewController: UIViewController {
 // MARK: Delegate
 extension WeatherViewController: WeatherRepositoryDelegate {
     func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherData data: WeatherData) {
-        weatherImage.image = UIImage(named: getImageName(for: data.weatherCondition))
+        weatherImage.image = getImageView(for: data.weatherCondition)
         weatherImage.tintColor = getImageColor(for: data.weatherCondition)
         minTemperatureLabel.text = "\(data.minTemperature)"
         maxTemperatureLabel.text = "\(data.maxTemperature)"
@@ -70,14 +70,14 @@ extension WeatherViewController: WeatherRepositoryDelegate {
 
 // MARK: Private
 private extension WeatherViewController {
-    func getImageName(for weatherCondition: WeatherCondition) -> String {
+    func getImageView(for weatherCondition: WeatherCondition) -> UIImage? {
         switch weatherCondition {
         case .sunny:
-            return "weather-sunny"
+            return UIImage.sunny
         case .cloudy:
-            return "weather-cloudy"
+            return UIImage.cloudy
         case .rainy:
-            return "weather-rainy"
+            return UIImage.rainy
         }
     }
     
@@ -93,3 +93,16 @@ private extension WeatherViewController {
     }
 }
 
+extension UIImage {
+    static var sunny: UIImage? {
+        return UIImage(named: "weather-sunny")
+    }
+    
+    static var cloudy: UIImage? {
+        return UIImage(named: "weather-cloudy")
+    }
+    
+    static var rainy: UIImage? {
+        return UIImage(named: "weather-rainy")
+    }
+}
