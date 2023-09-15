@@ -10,11 +10,11 @@ import UIKit
 // MARK: ViewController
 final class WeatherViewController: UIViewController {
     
-    var repository: WeatherRepositoryProtocol = WeatherRepository()
+    private var repository: WeatherRepositoryProtocol!
     
-    @IBOutlet var weatherImage: UIImageView!
-    @IBOutlet var minTemperatureLabel: UILabel!
-    @IBOutlet var maxTemperatureLabel: UILabel!
+    @IBOutlet @ViewLoading var weatherImage: UIImageView
+    @IBOutlet @ViewLoading var minTemperatureLabel: UILabel
+    @IBOutlet @ViewLoading var maxTemperatureLabel: UILabel
     
     @IBAction private func closeAction(_ sender: Any) {
         dismiss(animated: true)
