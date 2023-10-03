@@ -12,6 +12,8 @@ final class WeatherViewController: UIViewController {
     
     private let repository: WeatherRepositoryProtocol = WeatherRepository()
     
+    private var isAlertVisible: Bool = false
+    
     @IBOutlet @ViewLoading private var weatherImage: UIImageView
     @IBOutlet @ViewLoading private var minTemperatureLabel: UILabel
     @IBOutlet @ViewLoading private var maxTemperatureLabel: UILabel
@@ -21,12 +23,20 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction private func reloadAction(_ sender: Any) {
+        guard !isAlertVisible else { return }
         repository.fetchWeatherCondition(area: "Tokyo", date: .now)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         repository.delegate = self
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.reloadAction),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
     }
     
     deinit {
@@ -45,9 +55,12 @@ extension WeatherViewController: WeatherRepositoryDelegate {
     
     func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: Error) {
         let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
-        let done = UIAlertAction(title: "OK", style: .default)
+        let done = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.isAlertVisible = false
+        }
         alert.addAction(done)
         present(alert, animated: true)
+        isAlertVisible = true
     }
 }
 

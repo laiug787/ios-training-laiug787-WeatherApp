@@ -1,5 +1,5 @@
 //
-//  WeatherRequest.swift
+//  WeatherRequestParameter.swift
 //  WhetherApp
 //
 //  Created by 瀬川 裕翔 on 2023/09/11.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherRequestData: Encodable {
+struct WeatherRequestParameter: Encodable {
     let area: String
     let date: Date
 }
