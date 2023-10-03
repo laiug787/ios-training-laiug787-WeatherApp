@@ -10,23 +10,30 @@ import UIKit
 // MARK: ViewController
 final class WeatherViewController: UIViewController {
     
-    private let repository: WeatherRepositoryProtocol = WeatherRepository()
+    private var repository: WeatherRepositoryProtocol!
     
-    private var isAlertVisible: Bool = false
-    
-    @IBOutlet @ViewLoading private var weatherImage: UIImageView
-    @IBOutlet @ViewLoading private var minTemperatureLabel: UILabel
-    @IBOutlet @ViewLoading private var maxTemperatureLabel: UILabel
+    @IBOutlet @ViewLoading var weatherImage: UIImageView
+    @IBOutlet @ViewLoading var minTemperatureLabel: UILabel
+    @IBOutlet @ViewLoading var maxTemperatureLabel: UILabel
     
     @IBAction private func closeAction(_ sender: Any) {
         dismiss(animated: true)
     }
     
-    @IBAction private func reloadAction(_ sender: Any) {
-        guard !isAlertVisible else { return }
+    @IBAction func reloadAction(_ sender: Any) {
+        guard self.presentedViewController == nil else { return }
         repository.fetchWeatherCondition(area: "Tokyo", date: .now)
     }
     
+    init?(coder: NSCoder, repository: WeatherRepositoryProtocol) {
+        self.repository = repository
+        super.init(coder: coder)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         repository.delegate = self
@@ -47,7 +54,7 @@ final class WeatherViewController: UIViewController {
 // MARK: Delegate
 extension WeatherViewController: WeatherRepositoryDelegate {
     func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFetchWeatherData data: WeatherData) {
-        weatherImage.image = UIImage(named: getImageName(for: data.weatherCondition))
+        weatherImage.image = getImageView(for: data.weatherCondition)
         weatherImage.tintColor = getImageColor(for: data.weatherCondition)
         minTemperatureLabel.text = "\(data.minTemperature)"
         maxTemperatureLabel.text = "\(data.maxTemperature)"
@@ -55,25 +62,22 @@ extension WeatherViewController: WeatherRepositoryDelegate {
     
     func weatherRepository(_ weatherRepository: WeatherRepositoryProtocol, didFailWithError error: Error) {
         let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
-        let done = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.isAlertVisible = false
-        }
+        let done = UIAlertAction(title: "OK", style: .default)
         alert.addAction(done)
         present(alert, animated: true)
-        isAlertVisible = true
     }
 }
 
 // MARK: Private
 private extension WeatherViewController {
-    func getImageName(for weatherCondition: WeatherCondition) -> String {
+    func getImageView(for weatherCondition: WeatherCondition) -> UIImage? {
         switch weatherCondition {
         case .sunny:
-            return "weather-sunny"
+            return UIImage.sunny
         case .cloudy:
-            return "weather-cloudy"
+            return UIImage.cloudy
         case .rainy:
-            return "weather-rainy"
+            return UIImage.rainy
         }
     }
     
@@ -89,3 +93,16 @@ private extension WeatherViewController {
     }
 }
 
+extension UIImage {
+    static var sunny: UIImage? {
+        return UIImage(named: "weather-sunny")
+    }
+    
+    static var cloudy: UIImage? {
+        return UIImage(named: "weather-cloudy")
+    }
+    
+    static var rainy: UIImage? {
+        return UIImage(named: "weather-rainy")
+    }
+}
